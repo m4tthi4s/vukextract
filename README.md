@@ -25,3 +25,6 @@ At this moment two modes are implemented:
 
 ## Contribution
 Opening issues and creating pull-requests is welcomed.
+
+### Tested on
+*  Ubuntu 16.04.2 LTS / DVDFab 10.0.4.0
