@@ -20,7 +20,7 @@ At this moment two modes are implemented:
   
 2. Search a dump-file given a disc_id:
 ```bash
-./vukextract --dump "$filename" --discid "$discid" | tee -a KEYDB.cfg
+./vukextract --dump "$filename" --disc_id "$discid" | tee -a KEYDB.cfg
 ```
 
 ## Contribution
