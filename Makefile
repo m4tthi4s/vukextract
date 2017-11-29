@@ -1,19 +1,25 @@
-CC = gcc -static -Wall -Werror
-#CC = gcc -g -static -Wall -Werror
-#CC = gcc -Wall -Werror
+CC = gcc
 
-LDFLAGS = -L../libgcrypt-1.7.6/src/.libs -lgcrypt \
+CFLAGS = -Wall -Werror
+# CFLAGS += -g
+
+STATIC = -L../libgcrypt-1.7.6/src/.libs -lgcrypt \
 					-L../libgpg-error-1.27/src/.libs -lgpg-error
 
-src = vukextract.c 
+LDFLAGS = $(shell libgcrypt-config --libs)
+
+src = vukextract.c
 obj = $(src:.c=.o)
 
-all: vukextract 
+all: vukextract
 
-
+#normal shared linking
 vukextract: $(obj)
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
+#static linking for prebuild binaries
+static: $(obj)
+	$(CC) $(CFLAGS) -o $@ $^ -static $(STATIC)
 
 clean:
 	rm -f $(obj) vukextract
